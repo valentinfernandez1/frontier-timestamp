@@ -2301,7 +2301,7 @@ dependencies = [
  "jsonrpsee",
  "libsecp256k1",
  "log",
- "lru 0.8.1",
+ "lru 0.10.0",
  "pallet-evm",
  "parity-scale-codec",
  "prometheus",
