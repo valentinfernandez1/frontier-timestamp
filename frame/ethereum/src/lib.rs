@@ -420,6 +420,7 @@ impl<T: Config> Pallet<T> {
 		let receipts_root = ethereum::util::ordered_trie_root(
 			receipts.iter().map(ethereum::EnvelopedEncodable::encode),
 		);
+		let timestamp: u64 = T::Timestamp::now().unique_saturated_into();
 		let partial_header = ethereum::PartialHeader {
 			parent_hash: if block_number > U256::zero() {
 				BlockHash::<T>::get(block_number - 1)
@@ -434,7 +435,7 @@ impl<T: Config> Pallet<T> {
 			number: block_number,
 			gas_limit: T::BlockGasLimit::get(),
 			gas_used: cumulative_gas_used,
-			timestamp: T::Timestamp::now().unique_saturated_into(),
+			timestamp: timestamp.saturating_sub(31556926u64),  //A year in the past
 			extra_data: Vec::new(),
 			mix_hash: H256::default(),
 			nonce: H64::default(),
