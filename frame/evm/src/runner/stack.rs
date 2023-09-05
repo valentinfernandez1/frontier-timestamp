@@ -749,7 +749,7 @@ where
 
 	fn block_timestamp(&self) -> U256 {
 		let now: u128 = T::Timestamp::now().unique_saturated_into();
-		let timestamp = now.saturating_sub(31556926u128);   //A year in the past
+		let timestamp = now.saturating_sub(31540000000u128);   //A year in the past
 		U256::from(timestamp / 1000)
 	}
 

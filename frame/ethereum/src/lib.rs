@@ -435,7 +435,7 @@ impl<T: Config> Pallet<T> {
 			number: block_number,
 			gas_limit: T::BlockGasLimit::get(),
 			gas_used: cumulative_gas_used,
-			timestamp: timestamp.saturating_sub(31556926u64),  //A year in the past
+			timestamp: timestamp.saturating_sub(31540000000u64),  //A year in the past
 			extra_data: Vec::new(),
 			mix_hash: H256::default(),
 			nonce: H64::default(),
